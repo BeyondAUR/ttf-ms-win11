@@ -1,4 +1,4 @@
-pkgbase = ttf-ms-win11
+pkgbase=ttf-ms-win11
 
 pkgname=(${pkgbase}{,-japanese,-korean,-sea,-thai,-zh_cn,-zh_tw,-other})
 pkgver=10.0.22631.2428
@@ -10,7 +10,7 @@ provides=(ttf-font)
 conflicts=(ttf-vista-fonts)
 makedepends=(udisks2 p7zip)
 
-_iso_filename = "win11.iso"
+_iso_filename="win11.iso"
 source=("${_iso_filename}::https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/22631.2428.231001-0608.23H2_NI_RELEASE_SVC_REFRESH_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso")
 noextract=("${_iso_filename}")
 
@@ -137,13 +137,13 @@ gadugi.ttf     gadugib.ttf                                  # Gadugi
 mvboli.ttf                                                  # MV Boli
 )
 
-sha256sums=("")
+sha256sums=('c8dbc96b61d04c8b01faf6ce0794fdf33965c7b350eaa3eb1e6697019902945c')
 
 
 prepare() {
-    7z e ${_iso_filename} -o "${srcdir}/" sources/install.wim
+    7z e ${_iso_filename} -o"${srcdir}/" sources/install.wim
     mkdir -p "${srcdir}/contents"
-    7z e "${srcdir}/install.wim" -o "${srcdir}/contents/"  Windows/{Fonts/"*".{ttf,ttc},System32/Licenses/neutral/"*"/"*"/license.rtf}
+    7z e "${srcdir}/install.wim" -o"${srcdir}/contents/"  Windows/{Fonts/"*".{ttf,ttc},System32/Licenses/neutral/"*"/"*"/license.rtf}
 }
 
 _per_package() {
@@ -159,40 +159,40 @@ package_ttf-ms-win11() {
     pkgdesc='Microsoft Windows 11 TrueType fonts'
     provides+=(emoji-font ttf-tahoma ttf-ms-fonts)
     conflicts+=(ttf-tahoma ttf-ms-fonts)
-    _package ${_ttf_ms_win11[@]}
+    _per_package ${_ttf_ms_win11[@]}
 }
 
 package_ttf-ms-win11-japanese() {
     pkgdesc='Microsoft Windows 11 Japanese TrueType fonts'
-    _package ${_ttf_ms_win11_japanese[@]}
+    _per_package ${_ttf_ms_win11_japanese[@]}
 }
 
 package_ttf-ms-win11-korean() {
     pkgdesc='Microsoft Windows 11 Korean TrueType fonts'
-    _package ${_ttf_ms_win11_korean[@]}
+    _per_package ${_ttf_ms_win11_korean[@]}
 }
 
 package_ttf-ms-win11-sea() {
     pkgdesc='Microsoft Windows 11 Southeast Asian TrueType fonts'
-    _package ${_ttf_ms_win11_sea[@]}
+    _per_package ${_ttf_ms_win11_sea[@]}
 }
 
 package_ttf-ms-win11-thai() {
     pkgdesc='Microsoft Windows 11 Thai TrueType fonts'
-    _package ${_ttf_ms_win11_thai[@]}
+    _per_package ${_ttf_ms_win11_thai[@]}
 }
 
 package_ttf-ms-win11-zh_cn() {
     pkgdesc='Microsoft Windows 11 Simplified Chinese TrueType fonts'
-    _package ${_ttf_ms_win11_zh_cn[@]}
+    _per_package ${_ttf_ms_win11_zh_cn[@]}
 }
 
 package_ttf-ms-win11-zh_tw() {
     pkgdesc='Microsoft Windows 11 Traditional Chinese TrueType fonts'
-    _package ${_ttf_ms_win11_zh_tw[@]}
+    _per_package ${_ttf_ms_win11_zh_tw[@]}
 }
 
 package_ttf-ms-win11-other() {
     pkgdesc='Microsoft Windows 11 Other TrueType fonts'
-    _package ${_ttf_ms_win11_other[@]}
+    _per_package ${_ttf_ms_win11_other[@]}
 }
